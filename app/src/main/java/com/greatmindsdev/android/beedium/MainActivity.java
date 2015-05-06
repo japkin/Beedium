@@ -1,22 +1,25 @@
 package com.greatmindsdev.android.beedium;
 
-import java.util.Locale;
-
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -160,6 +163,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
          * The fragment argument representing the section number for this
          * fragment.
          */
+        private ArrayAdapter<String> mGroupAdapter;
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         /**
@@ -181,6 +185,32 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            String[] groupArray = {
+                    "Fancy Dinner",
+                    "Fast Food",
+                    "Family Friendly",
+                    "Work Lunch",
+                    "Alpharetta",
+                    "Atlanta - Downtown",
+                    "Burgers",
+                    "Steak",
+                    "Seafood"
+            };
+
+            List<String> groupList = new ArrayList<String>(Arrays.asList(groupArray));
+
+            mGroupAdapter =
+                    new ArrayAdapter<String>(
+                            getActivity(),
+                            R.layout.list_item_groups,
+                            R.id.list_item_groups_textview,
+                            groupList
+                    );
+
+            ListView groupListView = (ListView) rootView.findViewById(
+                    R.id.listview_groups);
+            groupListView.setAdapter(mGroupAdapter);
+
             return rootView;
         }
     }
