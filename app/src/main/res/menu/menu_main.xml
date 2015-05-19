@@ -6,8 +6,16 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
+    <item android:id="@+id/action_search"
+        android:title="@string/action_search"
+        android:icon="@drawable/ic_action_search"
+        android:orderInCategory="11"
+        app:showAsAction="always"
+        android:actionLayout="@layout/action_button_search"/>
     <item android:id="@+id/action_begin"
         android:title="@string/action_begin"
+        android:icon="@drawable/ic_action_play"
         android:orderInCategory="10"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:actionLayout="@layout/action_button_begin"/>
 </menu>
