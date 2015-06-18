@@ -43,6 +43,7 @@ public class GroupFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         String[] groupArray = {
+                "Dive Bar",
                 "Fancy Dinner",
                 "Fast Food",
                 "Family Friendly",
